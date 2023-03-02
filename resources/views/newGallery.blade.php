@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link href="{{asset('assets/images/Badar-icon-16x16.png')}}" rel="icon" type="image/png" sizes="16x16" />
     <link href="{{asset('assets/images/Badar-icon-32x32.png')}}" rel="icon" type="image/png" sizes="32x32" />
-    <link href="{{asset('assets/css/galleryUpload.css')}}" rel="stylesheet" type=   "text/css" />
-    
+    <link href="{{asset('assets/css/galleryUpload.css')}}" rel="stylesheet" type="text/css" />
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
-    
+
     <title>Badar Expo Solution's</title>
-    
+
     <!-- Bootstrap core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
 
@@ -40,6 +40,10 @@
             <div class="form-group mt-2">
                 <label for="eventCategory">Event Catoegory</label>
                 <select class="form-control form-control-md" name="eventCategory" id="eventCategory" aria-describedby="eventCategory" required>
+                    @foreach ($categories as $key => $category)
+                    <option value="{{$category->value}}" <?php echo $key < 1 && "selected"; ?>>{{$category->name}}</option>
+                    @endforeach
+<!-- 
                     <option value="Corporate-Events-and-Seminar" selected>Corporate Events & Seminar</option>
                     <option value="Exhibitions-and-Conferences">Exhibitions & Conferences</option>
                     <option value="Festivals-and-Sports">Festivals & Sports</option>
@@ -47,7 +51,7 @@
                     <option value="Marketing-and-PR">Marketing & PR</option>
                     <option value="Sponsorship">Sponsorship</option>
                     <option value="Weddings">Weddings</option>
-                    <option value="Social-Media-and-Digital">Social Media & Digital</option>
+                    <option value="Social-Media-and-Digital">Social Media & Digital</option> -->
                 </select>
             </div>
             <div class="form-group mt-4">
@@ -78,6 +82,7 @@
                     <td>{{ $fileUpload->filename }}</td>
                 </tr>
                 @endforeach
+                categories
             </tbody>
         </table>
         @endif

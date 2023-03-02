@@ -40,6 +40,10 @@
                 <input type="text" class="form-control" id="aboutEve" name="aboutEve" placeholder="About Event">
             </div>
             <div class="form-group mt-2">
+                <label for="eventWeb">Event Website</label>
+                <input type="text" class="form-control" id="eventWeb" name="eventWeb" placeholder="Event Website" required>
+            </div>
+            <div class="form-group mt-2">
                 <label for="fullEventName">Full Event Name</label>
                 <input type="text" class="form-control" id="fullEventName" name="fullEventName" placeholder="Full Event Name" required>
             </div>

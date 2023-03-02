@@ -1218,6 +1218,7 @@ section.popular-categories .main-button {
 .popular-item .top-content {
   display: flex;
   margin-bottom: 30px;
+  height: 100px;
 }
 
 .popular-item .icon {
@@ -1230,6 +1231,15 @@ section.popular-categories .main-button {
   border-radius: 10px;
   margin-right: 20px;
 }
+.popular-item .right {
+  /* background-color: #f7f7f7; */
+  width: 200px;
+  /* display: inline-block;
+  text-align: center;
+  line-height: 75px;
+  border-radius: 10px;
+  margin-right: 20px; */
+}
 
 .popular-item .icon img {
   max-width: 36px;
@@ -1241,6 +1251,7 @@ section.popular-categories .main-button {
   margin-top: 5px;
   font-weight: 700;
   margin-bottom: 12px;
+  height: 40px;
 }
 
 .popular-item span em {

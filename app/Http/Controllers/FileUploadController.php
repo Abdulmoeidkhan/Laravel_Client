@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FileUpload;
+use App\Models\Eventcategories;
 
 class FileUploadController extends Controller
 {
-    public function fileuploaded()
+    public function galleryUpload()
     {
         $fileUplaods = FileUpload::get();
-        return view('newGallery', ['fileUploads' => $fileUplaods]);
+        $categories = Eventcategories::all();
+        return view('newGallery', ['fileUploads' => $fileUplaods, 'categories' => $categories]);
     }
 
     public function multipleUpload(Request $request)
@@ -21,14 +23,12 @@ class FileUploadController extends Controller
         ]);
 
         $files = $request->file('fileuploads');
-        echo "<pre>";
-        print_r($files);
-        echo "</pre>";
 
         foreach ($files as $key => $file) {
             $fileUpload = new FileUpload;
-            $fileUpload->filename = $file->storeAs("evnetsCategories/" . $request->eventCategory . "/images", $request->eventCategory . "-" . $key . "." . $file->getClientOriginalExtension());
-            $fileUpload->categories=$request->eventCategory;
+            $file->storeAs("public/eventsCategories/" . $request->eventCategory . "/images", $request->eventCategory . "-" . $key . "." . $file->getClientOriginalExtension());
+            $fileUpload->filename = "eventsCategories/" . $request->eventCategory . "/images"."/". $request->eventCategory . "-" . $key . "." . $file->getClientOriginalExtension();
+            $fileUpload->categories = $request->eventCategory;
             $fileUpload->save();
             // echo "<br/>";
             // echo $file;
@@ -36,6 +36,6 @@ class FileUploadController extends Controller
             // return "Submitted";
         }
 
-        return redirect()->route('fileuploaded')->with('success', 'Files uploaded successfully!');
+        return redirect()->route('galleryUpload')->with('success', 'Files uploaded successfully!');
     }
 }

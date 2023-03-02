@@ -22,13 +22,6 @@
     <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <!-- <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/> -->
-    <!--
-
-TemplateMo 576 SnapX Photography
-
-https://templatemo.com/tm-576-snapx-photography
-
--->
 </head>
 
 <body>
@@ -40,7 +33,7 @@ https://templatemo.com/tm-576-snapx-photography
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            <img src="assets/images/BxssWhite.png" alt="Badar Expo Solutions" />
+                            <img src="{{asset('assets/images/BxssWhite.png')}}" alt="Badar Expo Solutions" />
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -49,10 +42,12 @@ https://templatemo.com/tm-576-snapx-photography
                             <li class="has-sub">
                                 <a href="javascript:void(0)">Our Work</a>
                                 <ul class="sub-menu">
-                                    <li><a href="contests.html">Corporate Events &amp; Seminar</a></li>
-                                    <li><a href="contest-details.html">Exhibitions &amp; Conferences</a></li>
+                                    @foreach($allCategories as $categoryDetails)
+                                    <li><a href="category/{{$categoryDetails->value}}">{{$categoryDetails->name}}</a></li>
+                                    <!-- <li><a href="contests.html">Corporate Events &amp; Seminar</a></li>
                                     <li><a href="contest-details.html">Festival &amp; Sports</a></li>
-                                    <li><a href="contest-details.html">Canopy &amp; Octanorm Building</a></li>
+                                    <li><a href="contest-details.html">Canopy &amp; Octanorm Building</a></li> -->
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="has-sub">
@@ -231,7 +226,33 @@ https://templatemo.com/tm-576-snapx-photography
             <div class="row">
                 <div class="col-lg-12">
                     <div class="owl-features owl-carousel" style="position: relative; z-index: 5" id="upcomingEvents">
+                        @foreach($futureEvents as $key=>$event)
                         <div class="item">
+                            <div class="thumb">
+                                <img src="{{asset('storage/events/images/'.$event->imgPath)}}" alt="{{$event->imgAlt}}" width="420px" height="280px" />
+                                <div class="hover-effect">
+                                    <div class="content">
+                                        <h4>
+                                            {{$event->name}}
+                                            <!-- <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span> -->
+                                        </h4>
+                                        <ul>
+                                            @if(strlen($event->fullName)>5)
+                                            <li><span>Event Name : </span>{{$event->fullName}}</li>
+                                            @endif
+                                            @if(strlen($event->aboutEve)>5)
+                                            <li><span>About Event : </span>{{$event->aboutEve}}</li>
+                                            @endif
+                                            @if(strlen($event->eventWebsite)>5)
+                                            <li><span>Website : </span><a href="{{$event->eventWebsite}}" target="_blank">{{$event->eventWebsite}}</a></li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        <!-- <div class="item">
                             <div class="thumb">
                                 <img src="assets/images/featured-01.jpg" alt="" />
                                 <div class="hover-effect">
@@ -389,7 +410,7 @@ https://templatemo.com/tm-576-snapx-photography
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -401,101 +422,133 @@ https://templatemo.com/tm-576-snapx-photography
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-heading">
-                        <h6>Our Categories</h6>
-                        <h4>Check Out <em>Popular</em> Contest <em>Categories</em></h4>
+                        <h6>Our Event Categories</h6>
+                        <h4>Check Out <em>Major</em> Event <em>Categories</em></h4>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="main-button">
+                    <!-- <div class="main-button">
                         <a href="categories.html">Discover All Categories</a>
-                    </div>
+                    </div> -->
                 </div>
+
+                @for($i=0;$i
+                <(count($categoriesArray));$i++) 
                 <div class="col-lg-3 col-sm-6">
                     <div class="popular-item">
                         <div class="top-content">
                             <div class="icon">
-                                <img src="assets/images/icon-01.png" alt="" />
+                                <!-- <img src="assets/images/icon-01.png" alt="" /> -->
+                                <!-- <img src="{{asset('storage/evnetsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />
+                                <img src="{{asset('storage/eventsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />-->
+                                <img src="{{asset('storage/'.$categoriesImage[$i])}}" alt="{{$categoriesArray[$i]}}" width="36px" height="35px"/> 
                             </div>
                             <div class="right">
-                                <h4>Nature Pic Contest</h4>
-                                <span><em>126</em> Available Contests</span>
+                                <h4>{{$categoriesArray[$i]}}</h4>
+                                <span><em>{{$categoriesArrayCount[$i]}}</em> Available Pictures</span>
                             </div>
                         </div>
                         <div class="thumb">
-                            <img src="assets/images/popular-01.png" alt="" />
-                            <span class="category">Top Contest</span>
-                            <span class="likes"><i class="fa fa-heart"></i> 256</span>
+                            <!-- <img src="assets/images/popular-01.png" alt="" /> -->
+                            <img src="{{asset('storage/'.$categoriesImage[$i])}}" alt="{{$categoriesArray[$i]}}" width="283px" height="207px"/>
+                            <!-- <span class="category">Top Contest</span>
+                            <span class="likes"><i class="fa fa-heart"></i> 256</span> -->
                         </div>
                         <div class="border-button">
                             <a href="contest-details.html">Browse Nature Pic Contests</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="popular-item">
-                        <div class="top-content">
-                            <div class="icon">
-                                <img src="assets/images/icon-02.png" alt="" />
-                            </div>
-                            <div class="right">
-                                <h4>Random Pic Contest</h4>
-                                <span><em>116</em> Available Contests</span>
-                            </div>
+                @endfor
+
+
+                <!-- <div class="col-lg-3 col-sm-6">
+                <div class="popular-item">
+                    <div class="top-content">
+                        <div class="icon"> -->
+                <!-- <img src="assets/images/icon-01.png" alt="" /> -->
+                <!-- <img src="{{asset('storage/eventsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />
                         </div>
-                        <div class="thumb">
-                            <img src="assets/images/popular-02.png" alt="" />
-                            <span class="category">Top Contest</span>
-                            <span class="likes"><i class="fa fa-heart"></i> 256</span>
-                        </div>
-                        <div class="border-button">
-                            <a href="contest-details.html">Browse Random Pic Contests</a>
+                        <div class="right">
+                            <h4>Nature Pic Contest</h4>
+                            <span><em>126</em> Available Contests</span>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="popular-item">
-                        <div class="top-content">
-                            <div class="icon">
-                                <img src="assets/images/icon-03.png" alt="" />
-                            </div>
-                            <div class="right">
-                                <h4>Portrait Pic Contest</h4>
-                                <span><em>164</em> Available Contests</span>
-                            </div>
-                        </div>
-                        <div class="thumb">
-                            <img src="assets/images/popular-03.png" alt="" />
-                            <span class="category">Top Contest</span>
-                            <span class="likes"><i class="fa fa-heart"></i> 256</span>
-                        </div>
-                        <div class="border-button">
-                            <a href="contest-details.html">Browse Portrait Pic Contests</a>
-                        </div>
+                    <div class="thumb"> -->
+                <!-- <img src="assets/images/popular-01.png" alt="" /> -->
+                <!-- <img src="{{asset('storage/eventsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />
+                        <span class="category">Top Contest</span>
+                        <span class="likes"><i class="fa fa-heart"></i> 256</span>
+                    </div>
+                    <div class="border-button">
+                        <a href="contest-details.html">Browse Nature Pic Contests</a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="popular-item">
-                        <div class="top-content">
-                            <div class="icon">
-                                <img src="assets/images/icon-04.png" alt="" />
-                            </div>
-                            <div class="right">
-                                <h4>Space Pic Contest</h4>
-                                <span><em>135</em> Available Contests</span>
-                            </div>
+            </div> -->
+                <!-- <div class="col-lg-3 col-sm-6">
+                <div class="popular-item">
+                    <div class="top-content">
+                        <div class="icon">
+                            <img src="assets/images/icon-02.png" alt="" />
                         </div>
-                        <div class="thumb">
-                            <img src="assets/images/popular-04.png" alt="" />
-                            <span class="category">Top Contest</span>
-                            <span class="likes"><i class="fa fa-heart"></i> 256</span>
+                        <div class="right">
+                            <h4>Random Pic Contest</h4>
+                            <span><em>116</em> Available Contests</span>
                         </div>
-                        <div class="border-button">
-                            <a href="contest-details.html">Browse Space Pic Contests</a>
-                        </div>
+                    </div>
+                    <div class="thumb">
+                        <img src="assets/images/popular-02.png" alt="" />
+                        <span class="category">Top Contest</span>
+                        <span class="likes"><i class="fa fa-heart"></i> 256</span>
+                    </div>
+                    <div class="border-button">
+                        <a href="contest-details.html">Browse Random Pic Contests</a>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="popular-item">
+                    <div class="top-content">
+                        <div class="icon">
+                            <img src="assets/images/icon-03.png" alt="" />
+                        </div>
+                        <div class="right">
+                            <h4>Portrait Pic Contest</h4>
+                            <span><em>164</em> Available Contests</span>
+                        </div>
+                    </div>
+                    <div class="thumb">
+                        <img src="assets/images/popular-03.png" alt="" />
+                        <span class="category">Top Contest</span>
+                        <span class="likes"><i class="fa fa-heart"></i> 256</span>
+                    </div>
+                    <div class="border-button">
+                        <a href="contest-details.html">Browse Portrait Pic Contests</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="popular-item">
+                    <div class="top-content">
+                        <div class="icon">
+                            <img src="assets/images/icon-04.png" alt="" />
+                        </div>
+                        <div class="right">
+                            <h4>Space Pic Contest</h4>
+                            <span><em>135</em> Available Contests</span>
+                        </div>
+                    </div>
+                    <div class="thumb">
+                        <img src="assets/images/popular-04.png" alt="" />
+                        <span class="category">Top Contest</span>
+                        <span class="likes"><i class="fa fa-heart"></i> 256</span>
+                    </div>
+                    <div class="border-button">
+                        <a href="contest-details.html">Browse Space Pic Contests</a>
+                    </div>
+                </div>
+            </div> -->
+            </div>
     </section>
 
     <section class="closed-contests">

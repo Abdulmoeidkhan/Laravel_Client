@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UploadEvent;
+use App\Http\Controllers\UploadEventController;
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\CategoryPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +17,14 @@ use App\Http\Controllers\FileUploadController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainPageController::class, "index"])->name("mainPage");
+Route::get('/categories', [FileUploadController::class, "index"])->name("categories");
+Route::get('/category/{name}', [CategoryPageController::class, 'categoryPage'])->name('categoryPage');
 
 Route::get('/newEvent', function () {
     return view('newEvent');
 })->name("newEvent");
-Route::get('/fileuploaded', [FileUploadController::class, 'fileuploaded'])->name('fileuploaded');
+Route::get('/galleryUpload', [FileUploadController::class, 'galleryUpload'])->name('galleryUpload');
 Route::post('/multiplefileupload', [FileUploadController::class, 'multipleUpload'])->name('multiplefileupload');
 
-Route::post("/uploadEvent", [UploadEvent::class, "uploadEvent"])->name("uploadEvent");
+Route::post("/eventUpload", [UploadEventController::class, "eventUpload"])->name("eventUpload");
