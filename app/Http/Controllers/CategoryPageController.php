@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use App\Models\FileUpload;
 use App\Models\eventcategories;
 
@@ -18,7 +19,7 @@ class CategoryPageController extends Controller
         };
         return in_array($name, $categoriesArray, TRUE) ?
         call_user_func(function ()use($name) {
-                $allCategories = eventcategories::all();
+                $allCategories = Cache::has('allCategories') ? Cache::get('allCategories') : eventcategories::all();
                 $categoriesImages = FileUpload::where('categories', $name)->get();
                 $data = [
                     'allCategories' => $allCategories,

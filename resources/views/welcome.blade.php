@@ -17,7 +17,7 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/templatemo-snapx-photography.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/css/template.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/owl.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
@@ -30,165 +30,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="{{asset('assets/images/BxssWhite.png')}}" alt="Badar Expo Solutions" />
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="index.html" class="active">Home</a></li>
-                            <li class="has-sub">
-                                <a href="javascript:void(0)">Our Work</a>
-                                <ul class="sub-menu">
-                                    @foreach($allCategories as $categoryDetails)
-                                    <li><a href="category/{{$categoryDetails->value}}">{{$categoryDetails->name}}</a></li>
-                                    <!-- <li><a href="contests.html">Corporate Events &amp; Seminar</a></li>
-                                    <li><a href="contest-details.html">Festival &amp; Sports</a></li>
-                                    <li><a href="contest-details.html">Canopy &amp; Octanorm Building</a></li> -->
-                                    @endforeach
-                                </ul>
-                            </li>
-                            <li class="has-sub">
-                                <a href="javascript:void(0)">Events Calender</a>
-                                <ul class="sub-menu">
-                                    <li><a href="contests.html">Contests</a></li>
-                                    <li><a href="contest-details.html">Single Contest</a></li>
-                                </ul>
-                            </li>
-                            <!-- <li><a href="categories.html">Categories</a></li> -->
-                            <!-- <li><a href="users.html">Venues</a></li> -->
-                            <!-- <li><a href="users.html">Webinar</a></li> -->
-                            <li class="has-sub">
-                                <a href="javascript:void(0)">About</a>
-                                <ul class="sub-menu">
-                                    <li><a href="contests.html">About Us</a></li>
-                                    <li>
-                                        <a href="contest-details.html">Leader &amp; Executives</a>
-                                    </li>
-                                    <li>
-                                        <a href="contest-details.html">Badar Engineering Services</a>
-                                    </li>
-                                    <li><a href="contest-details.html">Work Portfolio</a></li>
-                                    <li><a href="contest-details.html">Approach</a></li>
-                                    <li>
-                                        <a href="contest-details.html">
-                                            Why We
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="users.html">Gallery</a></li>
-                            <li><a href="users.html">Contact</a></li>
-                        </ul>
-                        <a class="menu-trigger">
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                    <x-Navbar active="home" :allCategories="$allCategories" />
                 </div>
             </div>
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
-    <div id="modal" class="popupContainer" style="display: none">
-        <div class="popupHeader">
-            <span class="header_title">Login</span>
-            <span class="modal_close"><i class="fa fa-times"></i></span>
-        </div>
-
-        <section class="popupBody">
-            <!-- Social Login -->
-            <div class="social_login">
-                <div class="">
-                    <a href="#" class="social_box fb">
-                        <span class="icon"><i class="fab fa-facebook"></i></span>
-                        <span class="icon_title">Connect with Facebook</span>
-                    </a>
-
-                    <a href="#" class="social_box google">
-                        <span class="icon"><i class="fab fa-google-plus"></i></span>
-                        <span class="icon_title">Connect with Google</span>
-                    </a>
-                </div>
-
-                <div class="centeredText">
-                    <span>Or use your Email address</span>
-                </div>
-
-                <div class="action_btns">
-                    <div class="one_half">
-                        <a href="#" id="login_form" class="btn">Login</a>
-                    </div>
-                    <div class="one_half last">
-                        <a href="#" id="register_form" class="btn">Sign up</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Username & Password Login form -->
-            <div class="user_login">
-                <form action="" method="post">
-                    <label>Email / Username</label>
-                    <input name="username" type="text" id="username" />
-                    <br />
-
-                    <label>Password</label>
-                    <input name="password" type="password" id="password" />
-                    <br />
-
-                    <div class="checkbox">
-                        <input id="remember" type="checkbox" />
-                        <label for="remember">Remember me on this computer</label>
-                    </div>
-
-                    <div class="action_btns">
-                        <div class="one_half">
-                            <a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a>
-                        </div>
-                        <div class="one_half last">
-                            <button type="submit" class="btn btn_red">Login</button>
-                        </div>
-                    </div>
-                </form>
-
-                <a href="#" class="forgot_password">Forgot password?</a>
-            </div>
-
-            <!-- Register Form -->
-            <div class="user_register">
-                <form action="" method="post">
-                    <label>Username</label>
-                    <input name="username" type="text" id="username" />
-                    <br />
-
-                    <label>Email Address</label>
-                    <input name="email" type="email" id="email" />
-                    <br />
-
-                    <label>Password</label>
-                    <input name="password" type="password" id="password" />
-                    <br />
-
-                    <div class="checkbox">
-                        <input id="send_updates" type="checkbox" />
-                        <label for="send_updates">Send me occasional email updates</label>
-                    </div>
-
-                    <div class="action_btns">
-                        <div class="one_half">
-                            <a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a>
-                        </div>
-                        <div class="one_half last">
-                            <button type="submit" class="btn btn_red">Register</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </div>
 
     <!-- ***** Main Banner Area Start ***** -->
     <div class="main-banner">
@@ -197,7 +44,14 @@
                 <div class="col-lg-10 offset-lg-1">
                     <div class="header-text">
                         <h2>
-                            Pakistan's Premier <em>Events</em> Solution <em>Provider</em>
+                            Pakistan's Premier
+                            <!-- <em> -->
+                            Events
+                            <!-- </em> -->
+                            Solution
+                            <!-- <em> -->
+                            Provider
+                            <!-- </em> -->
                         </h2>
                         <p>
                             Badar Expo Solutions is a full service event management company
@@ -208,10 +62,11 @@
                         </p>
                         <div class="buttons">
                             <div class="big-border-button">
-                                <a href="contests.html">Upcoming Events</a>
+                                <a href="{{route('eventPage', ['name' => 'upComingEvents'])}}">Upcoming Events</a>
                             </div>
                             <div class="icon-button">
-                                <a href="https://www.youtube.com/@BadarExpoSolutionsOfficial" target="_blank"><i class="fa fa-play"></i> Visit Our Youtube Channel Now</a>
+                                <a href="https://www.youtube.com/@BadarExpoSolutionsOfficial" target="_blank">
+                                    <i class="fa fa-play"></i> Visit Our Youtube Channel Now</a>
                             </div>
                         </div>
                     </div>
@@ -229,22 +84,22 @@
                         @foreach($futureEvents as $key=>$event)
                         <div class="item">
                             <div class="thumb">
-                                <img src="{{asset('storage/events/images/'.$event->imgPath)}}" alt="{{$event->imgAlt}}" width="420px" height="280px" />
+                                <img src="{{asset('storage/events/images/'.$event['imgPath'])}}" alt="{{$event['imgAlt']}}" width="420px" height="280px" />
                                 <div class="hover-effect">
                                     <div class="content">
                                         <h4>
-                                            {{$event->name}}
+                                            {{$event['name']}}
                                             <!-- <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <span>(4.5)</span> -->
                                         </h4>
                                         <ul>
-                                            @if(strlen($event->fullName)>5)
-                                            <li><span>Event Name : </span>{{$event->fullName}}</li>
+                                            @if(strlen($event['fullName'])>5)
+                                            <li><span>Event Name : </span>{{$event['fullName']}}</li>
                                             @endif
-                                            @if(strlen($event->aboutEve)>5)
-                                            <li><span>About Event : </span>{{$event->aboutEve}}</li>
+                                            @if(strlen($event['aboutEve'])>5)
+                                            <li><span>About Event : </span>{{$event['aboutEve']}}</li>
                                             @endif
-                                            @if(strlen($event->eventWebsite)>5)
-                                            <li><span>Website : </span><a href="{{$event->eventWebsite}}" target="_blank">{{$event->eventWebsite}}</a></li>
+                                            @if(strlen($event['eventWebsite'])>5)
+                                            <li><span>Website : </span><a href="{{$event['eventWebsite']}}" target="_blank">{{$event['eventWebsite']}}</a></li>
                                             @endif
                                         </ul>
                                     </div>
@@ -432,16 +287,14 @@
                     </div> -->
                 </div>
 
-                @for($i=0;$i
-                <(count($categoriesArray));$i++) 
-                <div class="col-lg-3 col-sm-6">
+                @for($i=0;$i<(count($categoriesArray));$i++) <div class="col-lg-3 col-sm-6">
                     <div class="popular-item">
                         <div class="top-content">
                             <div class="icon">
                                 <!-- <img src="assets/images/icon-01.png" alt="" /> -->
                                 <!-- <img src="{{asset('storage/evnetsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />
                                 <img src="{{asset('storage/eventsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />-->
-                                <img src="{{asset('storage/'.$categoriesImage[$i])}}" alt="{{$categoriesArray[$i]}}" width="36px" height="35px"/> 
+                                <img src="{{asset('storage/'.$categoriesImage[$i])}}" alt="{{$categoriesArray[$i]}}" width="36px" height="35px" />
                             </div>
                             <div class="right">
                                 <h4>{{$categoriesArray[$i]}}</h4>
@@ -450,24 +303,24 @@
                         </div>
                         <div class="thumb">
                             <!-- <img src="assets/images/popular-01.png" alt="" /> -->
-                            <img src="{{asset('storage/'.$categoriesImage[$i])}}" alt="{{$categoriesArray[$i]}}" width="283px" height="207px"/>
+                            <img src="{{asset('storage/'.$categoriesImage[$i])}}" alt="{{$categoriesArray[$i]}}" width="283px" height="207px" />
                             <!-- <span class="category">Top Contest</span>
                             <span class="likes"><i class="fa fa-heart"></i> 256</span> -->
                         </div>
                         <div class="border-button">
-                            <a href="contest-details.html">Browse Nature Pic Contests</a>
+                            <a href="{{route('categoryPage',['name'=> str_replace(' ','-',$categoriesArray[$i])])}}">View All</a>
                         </div>
                     </div>
-                </div>
-                @endfor
+            </div>
+            @endfor
 
 
-                <!-- <div class="col-lg-3 col-sm-6">
+            <!-- <div class="col-lg-3 col-sm-6">
                 <div class="popular-item">
                     <div class="top-content">
                         <div class="icon"> -->
-                <!-- <img src="assets/images/icon-01.png" alt="" /> -->
-                <!-- <img src="{{asset('storage/eventsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />
+            <!-- <img src="assets/images/icon-01.png" alt="" /> -->
+            <!-- <img src="{{asset('storage/eventsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />
                         </div>
                         <div class="right">
                             <h4>Nature Pic Contest</h4>
@@ -475,8 +328,8 @@
                         </div>
                     </div>
                     <div class="thumb"> -->
-                <!-- <img src="assets/images/popular-01.png" alt="" /> -->
-                <!-- <img src="{{asset('storage/eventsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />
+            <!-- <img src="assets/images/popular-01.png" alt="" /> -->
+            <!-- <img src="{{asset('storage/eventsCategories/Canopy-and-Octanorm-Building/images/Canopy-and-Octanorm-Building-0.PNG')}}" alt="alt text" />
                         <span class="category">Top Contest</span>
                         <span class="likes"><i class="fa fa-heart"></i> 256</span>
                     </div>
@@ -485,7 +338,7 @@
                     </div>
                 </div>
             </div> -->
-                <!-- <div class="col-lg-3 col-sm-6">
+            <!-- <div class="col-lg-3 col-sm-6">
                 <div class="popular-item">
                     <div class="top-content">
                         <div class="icon">
@@ -548,7 +401,7 @@
                     </div>
                 </div>
             </div> -->
-            </div>
+        </div>
     </section>
 
     <section class="closed-contests">
@@ -556,37 +409,39 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading text-center">
-                        <h6>Closed Photography Contests</h6>
+                        <h6>Past Events</h6>
                         <h4>
-                            <em>Previous Contests</em> With Handpicked <em>Winners</em>
+                            <em>Previous Events</em> with BXSS <em></em>
                         </h4>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="owl-features owl-carousel" style="position: relative; z-index: 5">
+                        @foreach($pastEvents as $pastEvent)
                         <div class="item">
                             <div class="closed-item">
                                 <div class="thumb">
-                                    <img src="assets/images/closed-01.jpg" alt="" />
-                                    <span class="winner"><em>Winner:</em> Anthony Soft</span>
-                                    <span class="price"><em>Award :</em> $1,600</span>
+                                    <img src="{{asset('storage/events/images/'.$pastEvent['imgPath'])}}" alt="{{$pastEvent['imgAlt']}}" />
+                                    <span class="winner"><em>Event Website:</em> {{$pastEvent['eventWebsite']}}</span>
+                                    <!-- <span class="price"><em>Website :</em> {{$pastEvent['eventWebsite']}}</span> -->
                                 </div>
                                 <div class="down-content">
                                     <div class="row">
                                         <div class="col-7">
                                             <h4>
-                                                88 Participants <br /><span>Number Of Artists</span>
+                                                {{$pastEvent['name']}} <br /><span>{{$pastEvent['fullName']}}</span>
                                             </h4>
                                         </div>
                                         <div class="col-5">
                                             <h4 class="pics">
-                                                320 Pictures <br /><span>Submited Pics</span>
+                                                {{$pastEvent['doe']}} <br /><span>{{$pastEvent['VenueEve']}}</span>
                                             </h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <div class="item">
                             <div class="closed-item">
                                 <div class="thumb">
@@ -637,14 +492,14 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="border-button text-center">
-                        <a href="contests.html">Browse Open Contests</a>
+                        <a href="{{route('eventPage', ['name' => 'pastEvents'])}}">Show All</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pricing-plans">
+    <!-- <section class="pricing-plans">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -708,7 +563,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <footer>
         <div class="container">

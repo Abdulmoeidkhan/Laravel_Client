@@ -30,10 +30,6 @@ class FileUploadController extends Controller
             $fileUpload->filename = "eventsCategories/" . $request->eventCategory . "/images"."/". $request->eventCategory . "-" . $key . "." . $file->getClientOriginalExtension();
             $fileUpload->categories = $request->eventCategory;
             $fileUpload->save();
-            // echo "<br/>";
-            // echo $file;
-            // echo "<br/>";
-            // return "Submitted";
         }
 
         return redirect()->route('galleryUpload')->with('success', 'Files uploaded successfully!');
