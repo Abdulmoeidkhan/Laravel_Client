@@ -8,7 +8,7 @@ use App\Models\Eventcategories;
 
 class FileUploadController extends Controller
 {
-    public function galleryUpload()
+    public function categoryUpload()
     {
         $fileUplaods = FileUpload::get();
         $categories = Eventcategories::all();

@@ -1,64 +1,36 @@
 <?php
 
-
 namespace App\Http\Controllers;
-
 
 use Illuminate\Http\Request;
 use App\Models\ImageGallery;
-
+// use App\Models\Eventcategories;
 
 class ImageGalleryController extends Controller
 {
-
-
-    /**
-     * Listing Of images gallery
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function renderGalleryUpload()
     {
-        $images = ImageGallery::get();
-        return view('image-gallery', compact('images'));
+        $fileUplaods = ImageGallery::get();
+        return view('galleryUpload', ['fileUploads' => $fileUplaods]);
     }
 
-
-    /**
-     * Upload image function
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function upload(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'fileuploads' => 'required',
+            'fileuploads.*' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
         ]);
 
+        $files = $request->file('fileuploads');
 
-        $input['image'] = time() . '.' . $request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images'), $input['image']);
+        foreach ($files as $key => $file) {
+            $fileUpload = new ImageGallery;
+            $file->storeAs("public/imagGallery/" . $request->eventYear . "/images", $request->eventYear . "-" . $key . "." . $file->getClientOriginalExtension());
+            $fileUpload->filename = "imagGallery/" . $request->eventYear . "/images"."/". $request->eventYear . "-" . $key . "." . $file->getClientOriginalExtension();
+            $fileUpload->year = $request->eventYear;
+            $fileUpload->save();
+        }
 
-
-        $input['title'] = $request->title;
-        ImageGallery::create($input);
-
-
-        return back()
-            ->with('success', 'Image Uploaded successfully.');
-    }
-
-
-    /**
-     * Remove Image function
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        ImageGallery::find($id)->delete();
-        return back()
-            ->with('success', 'Image removed successfully.');
+        return redirect()->route('galleryUpload')->with('success', 'Files uploaded successfully!');
     }
 }

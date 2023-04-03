@@ -18,6 +18,7 @@ use App\Http\Controllers\userSignIn;
 use App\Http\Controllers\userSignOut;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ImageGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +64,12 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/newEvent', function () {
         return view('newEvent');
     })->name("newEvent");
-    Route::get('/galleryUpload', [FileUploadController::class, 'galleryUpload'])->name('galleryUpload');
     Route::post("/eventUpload", [UploadEventController::class, "eventUpload"])->name("eventUpload");
+
+    Route::get('/categoryUpload', [FileUploadController::class, 'categoryUpload'])->name('categoryUpload');
     Route::post('/multiplefileupload', [FileUploadController::class, 'multipleUpload'])->name('multiplefileupload');
+
+    Route::get('/galleryUpload', [ImageGalleryController::class, 'renderGalleryUpload'])->name('galleryUpload');
     Route::post('/imageGallery',  [ImageGalleryController::class, "upload"])->name('imageGalleryPost');
     Route::delete('/imageGallery/{id}', [ImageGalleryController::class, "destroy"])->name('imageGalleryDelete');
 });
