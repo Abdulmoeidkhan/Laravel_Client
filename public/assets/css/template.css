@@ -789,7 +789,7 @@ section.popupBody {
 
 .btn {
   padding: 10px 20px;
-  background: #d51e25;
+  /* background: #d51e25; */
   color: #fff;
   transition: all 0.3s;
 }
@@ -801,6 +801,7 @@ section.popupBody {
 
 .btn:hover {
   background: #e4e4e2;
+  color:#d51e25;
 }
 
 .btn_red:hover {

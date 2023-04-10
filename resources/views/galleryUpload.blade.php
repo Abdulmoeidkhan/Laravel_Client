@@ -127,9 +127,11 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/galleryUpload.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/signout.js')}}"></script>
 </body>
 
 </html>

@@ -31,7 +31,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                <x-Navbar active="ourWork" :allCategories="$allCategories" />
+                    <x-Navbar active="ourWork" :allCategories="$allCategories" />
                 </div>
             </div>
         </div>
@@ -42,8 +42,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 header-text">
-                    <h2>Discover Most Popular Categories on <em>SnapX</em></h2>
-                    <p>You are allowed to freely use SnapX Photography Template for your commercial websites. You are not allowed to redistribute the template ZIP file on any other Free CSS websites.</p>
+                    <h2>Discover Most Popular Categories on <em>BXSS</em></h2>
+                    <p>
+                        Badar Expo Solutions is a full service event management company
+                        based in Karachi, Pakistan. Our company was created with the
+                        guidance and support of its parent company Badar Engineering
+                        Works by pairing together our skill set and passion for business
+                        and events.
+                    </p>
                 </div>
             </div>
         </div>
@@ -52,55 +58,15 @@
     <div class="top-categories">
         <div class="container">
             <div class="row">
-                <div class="col-lg col-sm-4">
-                    <div class="item">
-                        <div class="icon">
-                            <!-- <img src="assets/images/icon-01.png" alt=""> -->
+                <div class="d-flex flex-wrap">
+                    @foreach($allCategories as $allCategory)
+                    <div class="col-lg col-sm-4 p-1">
+                        <div class="item">
+                            <h4>{{$allCategory['name']}}</h4>
+                            <a href="{{route('categoryPage',['name'=>$allCategory->value])}}">View</a>
                         </div>
-                        <h4>Nature Picture</h4>
-                        <span>Available Contests</span>
-                        <span class="counter">128</span>
                     </div>
-                </div>
-                <div class="col-lg col-sm-4">
-                    <div class="item">
-                        <div class="icon">
-                            <!-- <img src="assets/images/icon-02.png" alt=""> -->
-                        </div>
-                        <h4>Space Contest</h4>
-                        <span>Available Contests</span>
-                        <span class="counter">224</span>
-                    </div>
-                </div>
-                <div class="col-lg col-sm-4">
-                    <div class="item">
-                        <div class="icon">
-                            <!-- <img src="assets/images/icon-03.png" alt=""> -->
-                        </div>
-                        <h4>Portrait Picture</h4>
-                        <span>Available Contests</span>
-                        <span class="counter">145</span>
-                    </div>
-                </div>
-                <div class="col-lg col-sm-4">
-                    <div class="item">
-                        <div class="icon">
-                            <!-- <img src="assets/images/icon-04.png" alt=""> -->
-                        </div>
-                        <h4>Nature Picture</h4>
-                        <span>Available Contests</span>
-                        <span class="counter">268</span>
-                    </div>
-                </div>
-                <div class="col-lg col-sm-4">
-                    <div class="item">
-                        <div class="icon">
-                            <!-- <img src="assets/images/icon-01.png" alt=""> -->
-                        </div>
-                        <h4>Space Picture</h4>
-                        <span>Available Contests</span>
-                        <span class="counter">310</span>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -112,7 +78,7 @@
                 <div class="col-lg-12">
                     <div class="section-heading text-center">
                         <h6>Featured Contests</h6>
-                        <h4>View Most <em>Popular</em> Category <em>Contests</em></h4>
+                        <h4>View Some <em>Glimpses</em> of Categories <em>that we cover</em></h4>
                     </div>
                 </div>
 

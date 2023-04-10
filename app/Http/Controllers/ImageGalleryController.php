@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ImageGallery;
+use Illuminate\Support\Facades\Auth;
 // use App\Models\Eventcategories;
 
 class ImageGalleryController extends Controller
 {
     public function renderGalleryUpload()
     {
-        $fileUplaods = ImageGallery::get();
-        return view('galleryUpload', ['fileUploads' => $fileUplaods]);
+        if(Auth::check()){
+            $fileUplaods = ImageGallery::get();
+            return view('galleryUpload', ['fileUploads' => $fileUplaods]);
+
+        }else{
+            return redirect('admin');
+        }
     }
 
     public function upload(Request $request)

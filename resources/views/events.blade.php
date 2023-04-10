@@ -81,8 +81,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading text-center">
-                        <h6>Photos &amp; Videos At SnapX</h6>
-                        <h4>Our Featured <em>Photos &amp; Videos</em> At SnapX</h4>
+                        <h6>Events &amp; That we cover</h6>
+                        <h4><?php echo $type; ?></h4>
                     </div>
                 </div>
                 <!-- <div class="col-lg-6">

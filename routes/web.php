@@ -19,6 +19,7 @@ use App\Http\Controllers\userSignOut;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ImageGalleryController;
+use App\Http\Controllers\SignUpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,9 +45,7 @@ Route::get('/Gallery', [GalleryController::class, "index"])->name("galleryPage")
 Route::get('/Contact', [ContactController::class, "index"])->name("contactPage");
 Route::get('/imageGallery', [ImageGalleryController::class, "index"])->name("imageGallery");
 
-Route::get('/admin', function () {
-    return view('signUp', ["user" => auth()->user()]);
-})->name("admin");
+Route::get('/admin', [SignUpController::class, 'index'])->name("admin");
 
 
 Route::get('/logout', [userSignOut::class, 'logout'])->name("logout");

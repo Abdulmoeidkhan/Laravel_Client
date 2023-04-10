@@ -17,9 +17,9 @@ class userSignIn extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             $req->session()->regenerate();
-            return "Logged In Successfully";
+            return ['status' => 1, "msg" => 'Logged In Successfully'];
         } else {
-            return 'The provided credentials do not match our records.';
+            return ['status' => 0, "msg" => 'The provided credentials do not match our records.'];
         }
     }
 }

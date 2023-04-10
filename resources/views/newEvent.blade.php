@@ -43,8 +43,7 @@
                         <path d="M3,21c0,0.553,0.448,1,1,1h16c0.553,0,1-0.447,1-1v-1c0-3.714-2.261-6.907-5.478-8.281C16.729,10.709,17.5,9.193,17.5,7.5 C17.5,4.468,15.032,2,12,2C8.967,2,6.5,4.468,6.5,7.5c0,1.693,0.771,3.209,1.978,4.219C5.261,13.093,3,16.287,3,20V21z M8.5,7.5 C8.5,5.57,10.07,4,12,4s3.5,1.57,3.5,3.5S13.93,11,12,11S8.5,9.43,8.5,7.5z M12,13c3.859,0,7,3.141,7,7H5C5,16.141,8.14,13,12,13z" />
                     </svg>
                 </a>
-                <a href="{{ route('categoryUpload') }}" 
-                style="
+                <a href="{{ route('categoryUpload') }}" style="
                 text-decoration:none;    
                 border: 0;
                 background: none;
@@ -114,10 +113,11 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="{{asset('assets/js/signout.js')}}"></script>
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/eventUploadForm.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/signUp.js') }}"></script>
 </body>
 
 </html>

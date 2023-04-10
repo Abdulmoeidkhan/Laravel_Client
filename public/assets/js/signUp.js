@@ -1,3 +1,15 @@
+function logout() {
+    window.axios.get('/logout')
+        .then(
+            (response) => {
+                window.location.pathname = "/admin"
+            }
+        )
+        .catch(function (error) {
+            console.log(error)
+        })
+}
+
 function signIn() {
     let uEmail = document.getElementsByName("emailSignIn")[0].value;
     let uPass = document.getElementsByName("passSignIn")[0].value;
@@ -7,8 +19,11 @@ function signIn() {
     })
         .then(
             (response) => {
-                if (response.data) {
+                if (response.data.status) {
                     window.location.pathname = "/newEvent";
+                }
+                else{
+                    alert(response.data.msg)
                 }
             }
         )
@@ -17,18 +32,6 @@ function signIn() {
         })
 
     return false;
-}
-
-function logout() {
-    axios.get('/logout')
-        .then(
-            (response) => {
-                window.location.pathname = "/admin"
-            }
-        )
-        .catch(function (error) {
-            console.log(error)
-        })
 }
 
 function signUp() {
@@ -40,7 +43,7 @@ function signUp() {
     uConfirmPass.setCustomValidity("Confirm Password does not match");
     uPass.setCustomValidity("Password does not match");
     uPass.value === uConfirmPass.value ?
-        axios.post('/userSignUp', {
+        window.axios.post('/userSignUp', {
             csrf,
             name: uName,
             email: uEmail,
@@ -69,7 +72,7 @@ function resetPass() {
     newConfirmPass.setCustomValidity("Password does not match");
     ;
     newPass.value === newConfirmPass.value ?
-        axios.post('/userReset', {
+        window.axios.post('/userReset', {
             email: uEmail,
             password: oldPass.value,
             newPass: newPass.value,

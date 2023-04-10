@@ -28,6 +28,7 @@ class EventPageController extends Controller
                 $data = [
                     'allCategories' => $allCategories,
                     'events' => ($name == "upComingEvents") ? $futureEvents : $pastEvents,
+                    'type'=> ($name == "upComingEvents") ? 'Future' : "Past",
                 ];
                 return view("events", [...$data]);
             })
